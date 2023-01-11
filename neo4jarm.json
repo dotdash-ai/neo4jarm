@@ -27,6 +27,17 @@
                 "description": "Unique name which will be the identifier for this set-up."
             }
         },
+        "publicIPAddressType": {
+            "type": "string",
+            "defaultValue": "Dynamic",
+            "metadata": {
+                "description": "When restarting the VM do you want the same IP (Static) or doesn't it matter (Dynamic)?"
+            },
+            "allowedValues": [
+                "Static",
+                "Dynamic"
+            ]
+        },
         "vmSize": {
             "type": "string",
             "defaultValue": "Standard_D2_v3",
@@ -71,7 +82,7 @@
     "variables": {
         "storageAccountName": "[toLower(parameters('storageAccountName'))]",
         "publicIPAddressName": "[concat(parameters('deploymentName'), '-publicIPAddresses')]",
-        "publicIPAddressType": "Dynamic",
+        "publicIPAddressType": "[parameters('publicIPAddressType')]",
         "nsgName": "[concat(parameters('deploymentName'), '-nsg')]",
         "nsgID": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgName'))]",
         "vnName": "[concat(parameters('deploymentName'), '-virtualNetwork')]",
