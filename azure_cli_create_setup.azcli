@@ -1,0 +1,10 @@
+templateFile="neo4jarm.json"
+paramFile="neo4jarm.parameters.json"
+today=$(date +"%d-%b-%Y")
+DeploymentName="ubutest1-"$today
+
+az deployment group create \
+ --name $DeploymentName \
+ --resource-group "TeamInternalProjects" \
+ --template-file $templateFile \
+ --parameters $paramFile
