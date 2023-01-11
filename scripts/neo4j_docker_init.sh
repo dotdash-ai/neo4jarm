@@ -1,5 +1,6 @@
 # Install Docker
-bash <(curl -fsSL https://get.docker.com)
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
 
 sudo docker run \
     --name testneo4jext \
