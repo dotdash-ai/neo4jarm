@@ -5,6 +5,7 @@ echo "Docker installed"
 
 sudo docker run \
     --name testneo4jext \
+    --restart=always \
     -p7474:7474 -p7687:7687 \
     -d \
     -e NEO4J_AUTH=none \
