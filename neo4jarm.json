@@ -163,6 +163,20 @@
                         }
                     },
                     {
+                        "name": "neo4j-bolt",
+                        "properties": {
+                        "description": "Allow neo4j bolt db connections",
+                        "protocol": "Tcp",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "7687",
+                        "sourceAddressPrefix": "Internet",
+                        "destinationAddressPrefix": "*",
+                        "access": "Allow",
+                        "priority": 102,
+                        "direction": "Inbound"
+                        }
+                    },
+                    {
                         "name": "neo4j-remote-shell",
                         "properties": {
                         "description": "Remote shell connections",
@@ -172,7 +186,7 @@
                         "sourceAddressPrefix": "Internet",
                         "destinationAddressPrefix": "*",
                         "access": "Allow",
-                        "priority": 102,
+                        "priority": 103,
                         "direction": "Inbound"
                         }
                     },
