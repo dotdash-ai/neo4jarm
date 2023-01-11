@@ -4,7 +4,7 @@ sh get-docker.sh
 echo "Docker installed"
 
 sudo docker run \
-    --name testneo4jext \
+    --name neo4japocgds \
     --restart=always \
     -p7474:7474 -p7687:7687 \
     -d \
