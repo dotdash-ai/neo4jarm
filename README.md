@@ -9,7 +9,7 @@
 6. Run the following command to deploy the ARM template: `sh azure_cli_create_setup.azcli`.
 
 ## Spark Connector
-1. In order to use the Neo4j db in Databricks, take a look at [this table](https://neo4j.com/docs/spark/current/overview/#_spark_and_scala_compatibility) to determine the correct Spark Connector for your Databricks environment. ! It's imperative to select the correct version or your querries will fail!
+1. In order to use the Neo4j db in Databricks, take a look at [this table](https://neo4j.com/docs/spark/current/overview/#_spark_and_scala_compatibility) to determine the correct Spark Connector for your Databricks environment. ! It's imperative to select the correct version or your queries will fail!
 2. Once you have determinded the correct version, you can download the corresponding `.jar` file from [this](https://github.com/neo4j-contrib/neo4j-spark-connector/releases) page.
 3. Navigate to your Databricks instance > Compute > select the relevant compute instance > Libraries > Install new > select "Upload" & "JAR" > drag and drop the `.jar` from the previous step > Install
 4. Still in Databricks: New (+ icon) > Notebook > Default Language: Scala; Cluster: {whichever cluster you just installed the `.jar` file to}
@@ -28,7 +28,7 @@ spark.read.format("org.neo4j.spark.DataSource")
   .show()
 ```
 7. If all went well, you should see a table as ouput with the top 20 matches.
-8. Read the "[Reading from Neo4j](https://neo4j.com/docs/spark/current/reading/)" documentation page to get started with your own querries.
+8. Read the "[Reading from Neo4j](https://neo4j.com/docs/spark/current/reading/)" documentation page to get started with your own queries.
 
 ## To Do
 - Include the option for an auto-shutdown of the VM.
