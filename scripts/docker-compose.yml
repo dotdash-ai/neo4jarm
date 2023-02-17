@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+
+  neo4j:
+    image: neo4j:5.3.0-community
+    hostname: neo4j
+    restart: always
+    volumes:
+      - neo4j_import:/var/lib/neo4j/import    
+    environment:
+      NEO4J_AUTH : neo4j/password
+      NEO4J_dbms_security_allow__csv__import__from__file__urls : true
+      NEO4J_dbms_memory_heap_initial__size : 4g
+      NEO4J_dbms_memory_heap.max__size : 4g
+      NEO4J_dbms_memory_pagecache_size : 4g
+      NEO4JLABS_PLUGINS : '["apoc", "graph-data-science"]'
+    ports:
+      - 7687:7687
+      - 7474:7474
+
+  python:
+    build: .
+    volumes:
+      - neo4j_import:/neo4j/import
+    container_name: python
+    restart: on-failure
+    depends_on:
+      - neo4j
+
+  neodash:
+    image: nielsdejong/neodash:latest
+    container_name: neodash
+    restart: on-failure
+    ports:
+      - 5005:5005
+
+volumes:
+    neo4j_import:
