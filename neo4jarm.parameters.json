@@ -6,7 +6,7 @@
             "value": "westeurope"
         },
         "storageAccountName": {
-            "value": "ubuntufsstore"
+            "value": "neo4jstoreqewjlk"
         },
         "adminUsername": {
             "value": "dotdash"
@@ -18,13 +18,13 @@
             "value": "Dynamic"
         },
         "vmSize": {
-            "value": "Standard_D2_v3"
+            "value": "Standard_F16s_v2"
         },
         "authenticationType": {
             "value": "sshPublicKey"
         },
         "adminPasswordOrKey": {
-            "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDd6y4BksKmvUiu+do5wS9XDRUTeNz0mTXO6U6zeLYaIa7sQ000+moKrBQrtIeqiAHuhjsZmkDioWprjnvhUJ8ydhoFrGf+ALy9xl65IoJ70FgRPwvejNjZxd8jiu3jrv+X3IYQcL+lbSuXILRw6FSTzJu3JrOKl2bD3GbQSapdmQsRnfYyclbBGIIhHmIOminkgozlQChMCSp0syT+0DUzJTNMLaO95DTbrJkNr8k8wK514rfBpzTFKlsNlUlsSYY1rQ+sv1FdDSHg6AtXYW/Ax6oGHqguqkCO35/nGZ9/gSnLTyfjpxOdcQiepPGmgpaADXxcmNzFLQrFic0ZYRxho0TOcW8heQq5VKgQsl9rlfo6Rf4dmcctq7VERZiLMBK4CUX0zqAemH5j0LRBKDYmRpCSjVtIa0pHGPZdaAU2ORWW0CVRdboev9FrUuUu20Vv/7Om164RZsNx0j8quT3Y6x0gYWXv4a8m+ZDkSx/cpLD4kPNsqs58m1HTFuQvz80= generated-by-azure"
+            "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDMc/BXq7qEvsoy9d62Rm0UzhSj6XA67uifgHH3X/CdcU49W66waHToPGjlV9W2t5VaCy1QCz+JRvYutaUyxyVv9m4Wb7PN7cNw5SzAOte/ND5TQECiBIz4l8ozGrNNUogN73ldrvn4jxXzz5Q+wHWoUb1xx2lK3ehi/De9EPpWv+d9PemdGluJHbR6jBaVeBk4UzyR1PrlzYLTNfeHuPo28Zq0qhwDLtEkfOIyVnNDW1upfm25VVIyRmHZeTSKDx0dkd4qZidf3PlUYwBP5XaSIWw6VMfemS6rrKDxYutA45EioMBy6wEY/Q4tl6TG5OFHEsQCLscbLExM/5q2ejtR8XTpMMCicmPy25AryGrDHia5KqTFDQ6Ln0Ibi4nOIETsttEsXuJidlz757KFZfds6yvzP3pfKkNpxpvNucXMFKqtj59HovIVxYqf0v96+kvPWvYQhzi4W2OEMYrwVw3OvTvF6csmGPIh5mqtpsFx0q5/kRgzauETTkaYstMdezk= generated-by-azure"
         },
         "ubuntuOSVersion": {
             "value": "18.04-LTS"
