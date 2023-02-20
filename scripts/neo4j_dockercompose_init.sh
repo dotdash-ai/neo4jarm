@@ -17,7 +17,13 @@ echo \
 
 # Install Docker
 sudo apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Verify installation
 sudo docker run hello-world
+
+# Docker compose yml file
+sudo wget https://raw.githubusercontent.com/dotdash-ai/neo4jarm/dockercompose/scripts/docker-compose.yml
+
+# Build and run docker compose
+sudo docker compose up -d

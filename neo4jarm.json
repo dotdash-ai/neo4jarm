@@ -203,6 +203,20 @@
                         }
                     },
                     {
+                        "name": "neo4j-neodash",
+                        "properties": {
+                        "description": "Neodash connections",
+                        "protocol": "Tcp",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "5005",
+                        "sourceAddressPrefix": "Internet",
+                        "destinationAddressPrefix": "*",
+                        "access": "Allow",
+                        "priority": 104,
+                        "direction": "Inbound"
+                        }
+                    },
+                    {
                         "name": "ssh",
                         "properties": {
                         "description": "Allow SSH",
@@ -340,9 +354,9 @@
                 "autoUpgradeMinorVersion": true,
                 "settings": {
                     "fileUris": [
-                        "https://raw.githubusercontent.com/dotdash-ai/neo4jarm/main/scripts/neo4j_docker_init.sh"
+                        "https://raw.githubusercontent.com/dotdash-ai/neo4jarm/dockercompose/scripts/neo4j_dockercompose_init.sh"
                     ],
-                    "commandToExecute": "sh neo4j_docker_init.sh"
+                    "commandToExecute": "sh neo4j_dockercompose_init.sh"
                 }
             }
         }

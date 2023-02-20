@@ -35,5 +35,9 @@ spark.read.format("org.neo4j.spark.DataSource")
 - Update template to implement best-practices.
 - Implement an SSH key generation on start-up.
 - Use the generated storage account to save all neo4j data, rather than the VM disk, so it's accessible.
-- Include the Neo4j Spark Connector.
 - Include the `uniqueString` function to make sure names are unique.
+
+## Debugging
+- If you get a `Permissions XXXX for '~/.ssh/some_private_key' are too open.`, you need to apply the following command: `chmod 600 ~/.ssh/some_private_key`
+- The custom ARM script is downloaded to `/var/lib/waagent/custom-script/download/0`, as it's a protected dir you need to access it using a root environment `sudo -i`
+- The logs of the custom ARM scripts are located in `/var/log/azure/custom-script/handler.log`
