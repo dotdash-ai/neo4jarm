@@ -332,7 +332,8 @@
                 "autoUpgradeMinorVersion": true,
                 "settings": {
                     "fileUris": [
-                        "https://raw.githubusercontent.com/dotdash-ai/neo4jarm/dockercompose/scripts/neo4j_dockercompose_init.sh"
+                        "https://raw.githubusercontent.com/dotdash-ai/neo4jarm/main/scripts/neo4j_dockercompose_init.sh",
+                        "https://raw.githubusercontent.com/dotdash-ai/neo4jarm/main/scripts/docker-compose.yml"
                     ],
                     "commandToExecute": "sh neo4j_dockercompose_init.sh"
                 }
