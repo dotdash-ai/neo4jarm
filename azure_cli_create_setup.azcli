@@ -2,8 +2,8 @@ templateFile="neo4jarm.json"
 paramFile="neo4jarm.parameters.json"
 deploymentNameParams=$(cat "neo4jarm.parameters.json" | jq -r ".parameters.deploymentName.value")
 deploymentLocation=$(cat "neo4jarm.parameters.json" | jq -r ".parameters.location.value")
-today=$(date +"%d-%b-%Y")
-DeploymentName=$deploymentNameParams"_"$today
+now=$(date +"%d-%b-%Y_%H.%M")
+DeploymentName=$deploymentNameParams"_"$now
 
 resourceGroup="sshTestBen2"
 
@@ -23,7 +23,6 @@ az deployment group create \
  --resource-group $resourceGroup \
  --template-file $templateFile \
  --parameters $paramFile \
- --parameters vmSize="Standard_D2_v3" \
  --parameters adminPasswordOrKey="$generatedSSHKey"
 #  --parameters adminPasswordOrKey="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCrxq1z2Xv43KOAT2Lbfuag5MnC9zatgt+NVSwCGl7W9fYSmppRRscHNgWbVDrpZ58dmNe2jIHVwFNfNOho1rcPgPMAEL5kcLVrAoRT3MRwPP7J/xvfthII7eBEx98glkvqEfz3uxaMOTtCTUUCUWXEyjb1g6OHNZIu2Hkp7mexX/AdjtmsgBqBhoPrch1NzlIKOAWKRLDxnnoZxsLBbeJJ55Y15gXRJKOOn4VRs79LHs/u6ghbxgiynWmi6TimlwrU7d1sEPTTzAaZo9fYDJhzd7wFs/5zBV2/0x9o0ybKUQt8bu0bO7pSg1c0Dxk1Y+T5bttSXWWUN9zWSP13jhCDiWfcq1t/jwDLcFz4PPZGBlJV2FY3tlxn4N/lzL6A8nfnOvjHr8IzOdFcMr25jR1klaF5Lh7UkWBquoD83VveI7vkTynnOH3GJ75Ol8PSA1del8esCrNwKfIzLG5hLKn02wBIIYFqsSdCNyozKXtfQ3XhBTAUP5bNF33sNxn2uCk= generated-by-azure"
 #  --debug \

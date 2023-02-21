@@ -5,14 +5,11 @@
         "location": {
             "value": "westeurope"
         },
-        "storageAccountName": {
-            "value": "neo4jstoreqewjlk"
-        },
         "adminUsername": {
             "value": "dotdash"
         },
         "deploymentName": {
-            "value": "neo4jubuntuxxs"
+            "value": "neo4jubuntuopo"
         },
         "publicIPAddressType": {
             "value": "Dynamic"

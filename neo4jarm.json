@@ -9,12 +9,6 @@
                 "description": "Where to create all resources."
             }
         },
-        "storageAccountName": {
-            "type": "string",
-            "metadata": {
-                "description": "Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed. 3-24 chars"
-            }
-        },
         "adminUsername": {
             "type": "string",
             "metadata": {
@@ -81,7 +75,6 @@
     },
     "functions": [],
     "variables": {
-        "storageAccountName": "[toLower(parameters('storageAccountName'))]",
         "publicIPAddressName": "[concat(parameters('deploymentName'), '-publicIPAddresses')]",
         "publicIPAddressType": "[parameters('publicIPAddressType')]",
         "nsgName": "[concat(parameters('deploymentName'), '-nsg')]",
@@ -104,23 +97,9 @@
                 }
                 ]
             }
-        },
-        "vmOSDiskStorageAccountType": "StandardLRS"
+        }
     },
     "resources": [
-        {
-            "name": "[variables('storageAccountName')]",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2021-04-01",
-            "location": "[parameters('location')]",
-            "tags": {
-                "displayName": "ubuntuVM1-StorageAccount"
-            },
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "StorageV2"
-        },
         {
             "name": "[variables('publicIPAddressName')]",
             "type": "Microsoft.Network/publicIPAddresses",
@@ -298,7 +277,6 @@
             "apiVersion": "2021-03-01",
             "location": "[parameters('location')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
                 "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
             ],
             "tags": {
