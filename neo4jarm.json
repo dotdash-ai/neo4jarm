@@ -23,7 +23,7 @@
         },
         "publicIPAddressType": {
             "type": "string",
-            "defaultValue": "Dynamic",
+            "defaultValue": "Static",
             "metadata": {
                 "description": "When restarting the VM do you want the same IP (Static) or doesn't it matter (Dynamic)?"
             },

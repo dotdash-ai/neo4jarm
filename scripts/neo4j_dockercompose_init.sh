@@ -22,8 +22,5 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 # Verify installation
 sudo docker run hello-world
 
-# Docker compose yml file
-# sudo wget https://raw.githubusercontent.com/dotdash-ai/neo4jarm/main/scripts/docker-compose.yml
-
 # Build and run docker compose
 sudo docker compose up -d

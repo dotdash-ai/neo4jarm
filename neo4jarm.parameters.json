@@ -9,10 +9,10 @@
             "value": "dotdash"
         },
         "deploymentName": {
-            "value": "neo4jtest4"
+            "value": "ACneo4j"
         },
         "publicIPAddressType": {
-            "value": "Dynamic"
+            "value": "Static"
         },
         "vmSize": {
             "value": "Standard_F16s_v2"
