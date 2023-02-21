@@ -32,8 +32,7 @@ spark.read.format("org.neo4j.spark.DataSource")
 
 ## To Do
 - Include the option for an auto-shutdown of the VM.
-- Update template to implement best-practices.
-- Implement an SSH key generation on start-up.
+- Update template to implement best-practices for structuring.
 - Use the generated storage account to save all neo4j data, rather than the VM disk, so it's accessible.
 - Include the `uniqueString` function to make sure names are unique.
 
