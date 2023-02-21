@@ -1,10 +1,32 @@
+# Change this variable
+resourceGroup="AtlasCopcoGraphProjectResourceGroupName"
+
 templateFile="neo4jarm.json"
 paramFile="neo4jarm.parameters.json"
-today=$(date +"%d-%b-%Y")
-DeploymentName="ubutest1-"$today
+deploymentNameParams=$(cat "neo4jarm.parameters.json" | jq -r ".parameters.deploymentName.value")
+deploymentLocation=$(cat "neo4jarm.parameters.json" | jq -r ".parameters.location.value")
+now=$(date +"%d-%b-%Y_%H.%M")
+DeploymentName=$deploymentNameParams"_"$now
+
+resourceGroupExists=$(az group exists --name $resourceGroup)
+
+if [[ $resourceGroupExists == "false" ]]
+then 
+    az group create --location $deploymentLocation --name $resourceGroup
+    echo "Resource group $resourceGroup created in $deploymentLocation."
+fi
+
+generatedSSHKey=$(az sshkey create --name "neo4jSSHKey" --resource-group $resourceGroup | jq -r ".publicKey")
+echo "$generatedSSHKey"
 
 az deployment group create \
  --name $DeploymentName \
- --resource-group "TeamInternalProjects" \
+ --resource-group $resourceGroup \
  --template-file $templateFile \
- --parameters $paramFile
+ --parameters $paramFile \
+ --parameters adminPasswordOrKey="$generatedSSHKey"
+
+ echo -e "\n\033[0;34mDo not forget to share the private SSH key with whomever you deployed this ARM template for."
+ echo -e "\033[0;34mIt will be the last SSH key pair created in ~/.ssh/ on your local (this) machine"
+ echo -e "\033[0;34m.pub = public, no suffix = private"
+ echo -e "\033[0;34mexecute 'chmod 600 /home/user/.ssh/privatekey' on your local machine for privacy reasons"

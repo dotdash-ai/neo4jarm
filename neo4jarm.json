@@ -9,12 +9,6 @@
                 "description": "Where to create all resources."
             }
         },
-        "storageAccountName": {
-            "type": "string",
-            "metadata": {
-                "description": "Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed. 3-24 chars"
-            }
-        },
         "adminUsername": {
             "type": "string",
             "metadata": {
@@ -40,13 +34,14 @@
         },
         "vmSize": {
             "type": "string",
-            "defaultValue": "Standard_D2_v3",
+            "defaultValue": "Standard_F16s_v2",
             "metadata": {
                 "description": "Size of the virtual machine."
             },
             "allowedValues": [
                 "Standard_A2_v2",
-                "Standard_D2_v3"
+                "Standard_D2_v3",
+                "Standard_F16s_v2"
             ]
         },
         "authenticationType": {
@@ -80,7 +75,6 @@
     },
     "functions": [],
     "variables": {
-        "storageAccountName": "[toLower(parameters('storageAccountName'))]",
         "publicIPAddressName": "[concat(parameters('deploymentName'), '-publicIPAddresses')]",
         "publicIPAddressType": "[parameters('publicIPAddressType')]",
         "nsgName": "[concat(parameters('deploymentName'), '-nsg')]",
@@ -103,23 +97,9 @@
                 }
                 ]
             }
-        },
-        "vmOSDiskStorageAccountType": "StandardLRS"
+        }
     },
     "resources": [
-        {
-            "name": "[variables('storageAccountName')]",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2021-04-01",
-            "location": "[parameters('location')]",
-            "tags": {
-                "displayName": "ubuntuVM1-StorageAccount"
-            },
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "StorageV2"
-        },
         {
             "name": "[variables('publicIPAddressName')]",
             "type": "Microsoft.Network/publicIPAddresses",
@@ -198,6 +178,20 @@
                         "destinationAddressPrefix": "*",
                         "access": "Allow",
                         "priority": 103,
+                        "direction": "Inbound"
+                        }
+                    },
+                    {
+                        "name": "neo4j-neodash",
+                        "properties": {
+                        "description": "Neodash connections",
+                        "protocol": "Tcp",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "5005",
+                        "sourceAddressPrefix": "Internet",
+                        "destinationAddressPrefix": "*",
+                        "access": "Allow",
+                        "priority": 104,
                         "direction": "Inbound"
                         }
                     },
@@ -283,7 +277,6 @@
             "apiVersion": "2021-03-01",
             "location": "[parameters('location')]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
                 "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
             ],
             "tags": {
@@ -339,9 +332,9 @@
                 "autoUpgradeMinorVersion": true,
                 "settings": {
                     "fileUris": [
-                        "https://raw.githubusercontent.com/dotdash-ai/neo4jarm/main/scripts/neo4j_docker_init.sh"
+                        "https://raw.githubusercontent.com/dotdash-ai/neo4jarm/dockercompose/scripts/neo4j_dockercompose_init.sh"
                     ],
-                    "commandToExecute": "sh neo4j_docker_init.sh"
+                    "commandToExecute": "sh neo4j_dockercompose_init.sh"
                 }
             }
         }

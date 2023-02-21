@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  neo4j:
+    image: neo4j:5.3.0-community
+    hostname: neo4j
+    restart: always
+    volumes:
+      - neo4j_import:/var/lib/neo4j/import    
+    environment:
+      NEO4J_dbms_security_allow__csv__import__from__file__urls : true
+      NEO4J_dbms_memory_heap_initial__size : 4g
+      NEO4J_dbms_memory_heap.max__size : 4g
+      NEO4J_dbms_memory_pagecache_size : 4g
+      NEO4JLABS_PLUGINS : '["apoc", "graph-data-science"]'
+    # Bolt (7687), HTTP (7474), HTTPS (7473)
+    ports:
+      - 7687:7687
+      - 7474:7474
+      - 7473:7473
+
+  neodash:
+    image: neo4jlabs/neodash:2.2.3
+    container_name: neodash
+    restart: always
+    ports:
+      - 5005:5005
+
+volumes:
+    neo4j_import:
