@@ -26,7 +26,7 @@ az deployment group create \
  --parameters $paramFile \
  --parameters adminPasswordOrKey="$generatedSSHKey"
 
- echo -e "\n\033[0;34mDo not forget to share the private SSH key with whomever you deployed this ARM template for."
- echo -e "\033[0;34mIt will be the last SSH key pair created in ~/.ssh/ on your local (this) machine"
- echo -e "\033[0;34m.pub = public, no suffix = private"
- echo -e "\033[0;34mexecute 'chmod 600 /home/user/.ssh/privatekey' on your local machine for privacy reasons"
+ echo "\n\033[0;34mDo not forget to share the private SSH key with whomever you deployed this ARM template for."
+ echo "\033[0;34mIt will be the last SSH key pair created in ~/.ssh/ on your local (this) machine"
+ echo "\033[0;34m.pub = public, no suffix = private"
+ echo "\033[0;34mexecute 'chmod 600 /home/user/.ssh/privatekey' on your local machine for privacy reasons"

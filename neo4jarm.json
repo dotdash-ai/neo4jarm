@@ -44,6 +44,18 @@
                 "Standard_F16s_v2"
             ]
         },
+        "vmStorageAccountType": {
+            "type": "string",
+            "defaultValue": "Premium_LRS",
+            "metadata": {
+                "description": "Type of VM OSDisk, use Standard_LRS for Standard_D2_v3"
+            },
+            "allowedValues": [
+                "Standard_LRS",
+                "StandardSSD_LRS",
+                "Premium_LRS"
+            ]
+        },
         "authenticationType": {
             "type": "string",
             "defaultValue": "sshPublicKey",
@@ -168,20 +180,6 @@
                         }
                     },
                     {
-                        "name": "neo4j-remote-shell",
-                        "properties": {
-                        "description": "Remote shell connections",
-                        "protocol": "Tcp",
-                        "sourcePortRange": "*",
-                        "destinationPortRange": "1337",
-                        "sourceAddressPrefix": "Internet",
-                        "destinationAddressPrefix": "*",
-                        "access": "Allow",
-                        "priority": 103,
-                        "direction": "Inbound"
-                        }
-                    },
-                    {
                         "name": "neo4j-neodash",
                         "properties": {
                         "description": "Neodash connections",
@@ -302,7 +300,11 @@
                     "osDisk": {
                         "name": "[concat(variables('vmName'),'_OSDisk')]",
                         "caching": "ReadWrite",
-                        "createOption": "FromImage"
+                        "createOption": "FromImage",
+                        "diskSizeGB": 128,
+                        "managedDisk": {
+                            "storageAccountType": "[parameters('vmStorageAccountType')]"
+                        }
                     }
                 },
                 "networkProfile": {

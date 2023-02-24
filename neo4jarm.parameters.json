@@ -6,16 +6,19 @@
             "value": "westeurope"
         },
         "adminUsername": {
-            "value": "dotdash"
+            "value": "atlasadmin"
         },
         "deploymentName": {
-            "value": "ACneo4j"
+            "value": "atlasconeo4j"
         },
         "publicIPAddressType": {
             "value": "Static"
         },
         "vmSize": {
             "value": "Standard_F16s_v2"
+        },
+        "vmStorageAccountType": {
+            "value": "Premium_LRS"
         },
         "authenticationType": {
             "value": "sshPublicKey"
