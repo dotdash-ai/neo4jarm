@@ -31,9 +31,9 @@ spark.read.format("org.neo4j.spark.DataSource")
 8. Read the "[Reading from Neo4j](https://neo4j.com/docs/spark/current/reading/)" documentation page to get started with your own queries.
 
 ## To Do
-- Include the option for an auto-shutdown of the VM.
+- Include the option for an auto-shutdown of the VM. -> Insight takes care of this through their tool
 - Update template to implement best-practices for structuring.
-- Use the generated storage account to save all neo4j data, rather than the VM disk, so it's accessible.
+- Use the generated storage account to save all neo4j data, rather than the VM disk, so it's accessible and easier to scale. (+ update Dockerfile to map the data dir)
 - Include the `uniqueString` function to make sure names are unique.
 
 ## Debugging
